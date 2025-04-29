@@ -10,6 +10,8 @@ jobs:
       - name: Install the dependencies NPM in the front folder
         run: npm ci
         working-directory: ./front
-      - name: Generare the code coverage
+      - name: Install Angular
+        run: npm install -g @angular/cli
+      - name: Generate the code coverage
         run: ng test --code-coverage
         working-directory: ./front
