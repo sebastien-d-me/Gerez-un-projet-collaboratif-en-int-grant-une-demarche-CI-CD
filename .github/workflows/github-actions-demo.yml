@@ -15,3 +15,7 @@ jobs:
       - name: Generate the code coverage
         run: ng test --code-coverage --browsers=ChromeHeadless --watch=false
         working-directory: ./front
+      - name: Save the coverage
+        uses: actions/upload-artifact@v4
+        with:
+            path: ./front/coverage
