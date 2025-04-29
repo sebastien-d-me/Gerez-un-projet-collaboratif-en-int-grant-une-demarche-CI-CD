@@ -7,5 +7,9 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: npm ci
-      - run: ng test --code-coverage
+      - name: Install the dependencies NPM in the front folder
+        run: npm ci
+        working-directory: ./front
+      - name: Generare the code coverage
+        run: ng test --code-coverage
+        working-directory: ./front
