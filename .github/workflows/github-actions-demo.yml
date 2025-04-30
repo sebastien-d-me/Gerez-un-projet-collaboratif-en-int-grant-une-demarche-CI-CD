@@ -12,11 +12,21 @@ jobs:
         working-directory: ./front
       - name: Install Angular
         run: npm install -g @angular/cli
-      - name: Generate the code coverage
+      - name: Generate the front code coverage
         run: ng test --code-coverage --browsers=ChromeHeadless --watch=false
         working-directory: ./front
-      - name: Save the coverage
+      - name: Save the front coverage
         uses: actions/upload-artifact@v4
         with:
             name: front-coverage
             path: ./front/coverage
+      - name: Install the dependencies MVN in the back folder
+        run: mvn clean install
+        working-directory: ./back
+      - name: Generate the back code coverage
+        run: mvn jacoco:report
+      - name: Save the back coverage
+        uses: actions/upload-artifact@v4
+        with:
+            name: back-coverage
+            path: ./back/coverage
