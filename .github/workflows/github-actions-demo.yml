@@ -18,4 +18,5 @@ jobs:
       - name: Save the coverage
         uses: actions/upload-artifact@v4
         with:
+            name: front-coverage
             path: ./front/coverage
