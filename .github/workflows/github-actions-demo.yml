@@ -24,9 +24,9 @@ jobs:
         run: mvn clean install
         working-directory: ./back
       - name: Generate the back code coverage
-        run: mvn jacoco:report
+        run: mvn test
       - name: Save the back coverage
         uses: actions/upload-artifact@v4
         with:
             name: back-coverage
-            path: ./back/coverage
+            path: ./back/target/site/jacoco
