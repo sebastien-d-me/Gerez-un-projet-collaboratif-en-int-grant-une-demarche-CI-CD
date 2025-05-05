@@ -31,18 +31,3 @@ jobs:
         with:
             name: back-coverage
             path: ./back/target/site/jacoco
-  sonarqube:
-    name: SonarQube
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Install the dependencies MVN in the back folder
-        run: mvn clean install
-        working-directory: ./back
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
