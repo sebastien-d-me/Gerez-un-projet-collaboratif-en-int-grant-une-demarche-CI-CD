@@ -1,5 +1,5 @@
 name: Rapport de couvertures
-run-name: Gérez un projet collaboratif en intégrant une démarche CI/CD
+run-name: Rapport de couvertures
 on: [push]
 jobs:
   test-coverages:

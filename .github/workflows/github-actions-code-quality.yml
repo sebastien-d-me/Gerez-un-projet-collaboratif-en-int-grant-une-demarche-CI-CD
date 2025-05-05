@@ -1,5 +1,5 @@
 name: Qualité du code
-run-name: Gérez un projet collaboratif en intégrant une démarche CI/CD
+run-name: Qualité du code
 on: [push]
 jobs:
   sonarqube:
