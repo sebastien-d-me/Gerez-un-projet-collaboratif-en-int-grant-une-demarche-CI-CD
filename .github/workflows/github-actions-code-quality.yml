@@ -1,6 +1,11 @@
 name: Qualité du code
 run-name: Qualité du code
-on: [push]
+on: 
+    push:
+      branches: [main]
+    pull_request:
+      branches: [main]
+      types: [opened, reopened]
 jobs:
   sonarqube:
     name: SonarQube
