@@ -11,24 +11,37 @@ jobs:
     name: SonarQube
     runs-on: ubuntu-latest
     steps:
+      # Récupère le code
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      # Installe les dépendances NPM
       - name: Install the dependencies NPM in the front folder
         run: npm ci
         working-directory: ./front
+
+      # Installe le CLI Angular
       - name: Install Angular
         run: npm install -g @angular/cli
+
+      # Génère le rapport de couverture front
       - name: Generate the front code coverage
         run: ng test --code-coverage --browsers=ChromeHeadless --watch=false
         working-directory: ./front
+
+      # Installe les dépendances MVN
       - name: Install the dependencies MVN in the back folder
         run: mvn clean install
         working-directory: ./back
+
+      # Génère le rapport de couverture back
       - name: Generate the back code coverage
         run: mvn test
         working-directory: ./back
+
+      # Scan le répertoire avec SonarQube
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
